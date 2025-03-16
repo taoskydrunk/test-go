@@ -1,0 +1,41 @@
+services:
+  # web-ui:
+  #     build: 
+  #       context: ./front-end
+  #       dockerfile: ./Dockerfile
+  #     container_name: web-ui
+  #     command: yarn dev
+  #     # volumes:
+  #     # - ./front-end/src/app:/usr/src/app
+  #     # - /usr/src/app/node_modules
+  #     ports:
+  #       - "3000:3000"
+  #     networks:
+  #     - test-network
+  #     # depends_on:
+  #     # - mongodb
+  api:
+      build: 
+        context: ./back-end
+        dockerfile: ./Dockerfile
+      container_name: api
+      ports:
+        - "2727:2727"
+      networks:
+      - test-network     
+      depends_on:
+      - mongodb
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: test12345
+    ports:
+      - "27017:27017"
+    networks:
+      - test-network
+networks:
+  test-network:
+    driver: bridge
