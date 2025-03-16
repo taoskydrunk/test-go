@@ -1,19 +1,19 @@
 services:
-  # web-ui:
-  #     build: 
-  #       context: ./front-end
-  #       dockerfile: ./Dockerfile
-  #     container_name: web-ui
-  #     command: yarn dev
-  #     # volumes:
-  #     # - ./front-end/src/app:/usr/src/app
-  #     # - /usr/src/app/node_modules
-  #     ports:
-  #       - "3000:3000"
-  #     networks:
-  #     - test-network
-  #     # depends_on:
-  #     # - mongodb
+  web-ui:
+      build: 
+        context: ./front-end
+        dockerfile: ./Dockerfile
+      container_name: web-ui
+      command: yarn dev
+      # volumes:
+      # - ./front-end/src/app:/usr/src/app
+      # - /usr/src/app/node_modules
+      ports:
+        - "3000:3000"
+      networks:
+      - test-network
+      # depends_on:
+      # - mongodb
   api:
       build: 
         context: ./back-end
