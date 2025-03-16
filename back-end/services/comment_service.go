@@ -15,7 +15,7 @@ type CommentService struct {
 }
 
 func NewCommentService() *CommentService {
-	client := NewMongoDB("mongodb://root:test12345@0.0.0.0:27017")
+	client := NewMongoDB("mongodb://root:test12345@mongodb:27017")
 	return &CommentService{
 		commentModel: client,
 	}
